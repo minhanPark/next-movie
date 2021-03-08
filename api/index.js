@@ -6,7 +6,10 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
   function (config) {
-    config.params["api_key"] = process.env.NEXT_PUBLIC_API_KEY;
+    config.params = {
+      ...config.params,
+      api_key: process.env.NEXT_PUBLIC_API_KEY,
+    };
     return config;
   },
   function (error) {
