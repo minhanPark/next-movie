@@ -1,8 +1,17 @@
+import { getImage } from "../api/common";
 import { getNowPlayingMovie } from "../api/movie";
 
 const Movie = ({ nowPlayingList }) => {
-  console.log(nowPlayingList);
-  return <div>Movie Page</div>;
+  return (
+    <div>
+      <h2>Movie</h2>
+      {nowPlayingList.map((movie) => (
+        <div>
+          <img src={getImage({ path: movie.poster_path, isPoster: true })} />
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export const getServerSideProps = async () => {
