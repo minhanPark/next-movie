@@ -1,9 +1,11 @@
 import { getImage } from "../api/common";
 import { getNowPlayingMovie } from "../api/movie";
+import ImageSlider from "../components/imageSlider";
 
 const Movie = ({ nowPlayingList }) => {
   return (
     <div>
+      <ImageSlider />
       <h2>Movie</h2>
       {nowPlayingList.map((movie) => (
         <div>
