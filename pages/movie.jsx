@@ -5,7 +5,7 @@ import ImageSlider from "../components/imageSlider";
 const Movie = ({ nowPlayingList }) => {
   return (
     <div>
-      <ImageSlider />
+      <ImageSlider list={nowPlayingList} />
       <h2>Movie</h2>
       {nowPlayingList.map((movie) => (
         <div>
