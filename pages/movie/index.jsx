@@ -1,6 +1,6 @@
-import { getImage } from "../api/common";
-import { getNowPlayingMovie } from "../api/movie";
-import ImageSlider from "../components/imageSlider";
+import { getImage } from "../../api/common";
+import { getNowPlayingMovie } from "../../api/movie";
+import ImageSlider from "../../components/imageSlider";
 
 const Movie = ({ nowPlayingList }) => {
   return (
