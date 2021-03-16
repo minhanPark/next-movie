@@ -1,11 +1,33 @@
 import { getMovieDetail, getMovieRecommendations } from "../../api/movie";
+import { getImage } from "../../api/common";
 
 const MovieDetail = ({ movieData, recommendationData }) => {
   console.log(movieData);
   console.log(recommendationData);
   return (
-    <div>
-      <h1>무비 디테일</h1>
+    <div
+      className="bg-cover bg-center relative"
+      style={{
+        height: "90vh",
+        backgroundImage: `url(${getImage({ path: movieData.backdrop_path })})`,
+      }}
+    >
+      <div className="bg-gray-400 absolute w-full h-full bg-opacity-70"></div>
+      <div className="relative">
+        <div className="w-96">
+          <img src={getImage({ path: movieData.poster_path })} />
+        </div>
+        <h1>{movieData.title}</h1>
+        <p>{movieData.overview}</p>
+        <p>{movieData.vote_average}</p>
+        <p>
+          {movieData.genres.reduce(
+            (acc, currentVal, index) =>
+              acc + `${index === 0 ? currentVal.name : `, ${currentVal.name}`}`,
+            ""
+          )}
+        </p>
+      </div>
     </div>
   );
 };
