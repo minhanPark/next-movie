@@ -3,8 +3,6 @@ import { getImage } from "../../api/common";
 import Movie from "../../components/Movie";
 
 const MovieDetail = ({ movieData, recommendationData }) => {
-  console.log(movieData);
-  console.log(recommendationData);
   return (
     <div
       className="bg-cover bg-center relative flex justify-center items-center"
@@ -14,7 +12,7 @@ const MovieDetail = ({ movieData, recommendationData }) => {
       }}
     >
       <div className="bg-gray-400 absolute w-full h-full bg-opacity-70"></div>
-      <div className="relative p-9 flex">
+      <div className="relative p-9 flex flex-col sm:flex-row">
         <div className="w-96">
           <img src={getImage({ path: movieData.poster_path })} />
         </div>
