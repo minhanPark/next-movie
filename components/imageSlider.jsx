@@ -68,7 +68,9 @@ const ImageSlider = ({ list }) => {
                         {movie.original_title} 보러가기 &rarr;
                       </h3>
                       <h4 className="font-semibold text-xl mt-3">
-                        개봉일: {movie.release_date}
+                        {movie.release_date
+                          ? `개봉일: ${movie.release_date}`
+                          : `첫 방영일: ${movie.first_air_date}`}
                       </h4>
                     </div>
                   </div>

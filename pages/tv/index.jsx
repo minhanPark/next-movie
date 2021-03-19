@@ -1,25 +1,25 @@
-import { getImage } from "../../api/common";
-import { getNowPlayingMovie, getPopularMovie } from "../../api/movie";
-import ImageSlider from "../../components/imageSlider";
 import Link from "next/link";
+import { getOnTheAir, getPopularTv } from "../../api/tv";
+import { getImage } from "../../api/common";
+import ImageSlider from "../../components/imageSlider";
 
-const MoviePage = ({ nowPlayingList, popularList }) => {
+const TvPage = ({ onTheAirList, popularList }) => {
   return (
     <div>
-      <ImageSlider list={nowPlayingList} />
-      <h2 className="text-3xl my-8 px-3 font-bold">Movie</h2>
+      <ImageSlider list={onTheAirList} />
+      <h2 className="text-3xl my-8 px-3 font-bold">Tv Show</h2>
       <div className="grid grid-cols-3 gap-2">
-        {popularList.map((movie) => (
-          <Link href={`/movie/${movie.id}`}>
+        {popularList.map((tv) => (
+          <Link href={`/tv/${tv.id}`} key={tv.id}>
             <a>
               <div className="w-full relative group">
                 <div className="bg-gray-400 bg-opacity-60 py-3 w-full text-center absolute bottom-2 group-hover:bg-opacity-100">
                   <h3 className="group-hover:text-white group-hover:font-bold text-2xl">
-                    {movie.title}
+                    {tv.name}
                   </h3>
                 </div>
                 <div>
-                  <img src={`${getImage({ path: movie.poster_path })}`} />
+                  <img src={`${getImage({ path: tv.poster_path })}`} />
                 </div>
               </div>
             </a>
@@ -35,27 +35,28 @@ export const getServerSideProps = async () => {
     const {
       status,
       data: { results },
-    } = await getNowPlayingMovie();
+    } = await getOnTheAir();
 
     const {
       status: popularStatus,
-      data: { results: popularResult },
-    } = await getPopularMovie();
+      data: { results: popularResults },
+    } = await getPopularTv();
 
     if (status === 200 && popularStatus === 200) {
-      return { props: { nowPlayingList: results, popularList: popularResult } };
+      return { props: { onTheAirList: results, popularList: popularResults } };
     }
     return {
       props: {
-        ...(status === 200 && { nowPlayingList: results }),
-        ...(popularStatus === 200 && { popularList: popularResult }),
+        ...(status === 200 && { onTheAirList: results }),
+        ...(popularStatus === 200 && { popularList: popularResults }),
       },
     };
   } catch (error) {
+    console.error(error);
     return {
-      props: { error },
+      props: {},
     };
   }
 };
 
-export default MoviePage;
+export default TvPage;

@@ -1,4 +1,4 @@
-import { instance, instancs } from "./index";
+import { instance } from "./index";
 
 export const getTvDetail = (tvId) => instance.get(`/tv/${tvId}`);
 
