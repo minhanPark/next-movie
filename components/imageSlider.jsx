@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { getImage } from "../api/common";
 
-const ImageSlider = ({ list }) => {
+const ImageSlider = ({ list, isMovie = true }) => {
   const [isMobile, setIsMobile] = useState(false);
   const [index, setIndex] = useState(0);
 
@@ -40,7 +40,7 @@ const ImageSlider = ({ list }) => {
     ? null
     : list.map((movie, i) => (
         <div className={`${index === i ? "" : "hidden"}`} key={movie.id}>
-          <Link href={`/movie/${movie.id}`}>
+          <Link href={isMobile ? `/movie/${movie.id}` : `/tv/${movie.id}`}>
             <a>
               <div
                 className="bg-center bg-cover relative"
