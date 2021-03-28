@@ -6,7 +6,7 @@ import ImageSlider from "../../components/imageSlider";
 const TvPage = ({ onTheAirList, popularList }) => {
   return (
     <div>
-      <ImageSlider list={onTheAirList} />
+      <ImageSlider list={onTheAirList} isMovie={false} />
       <h2 className="text-3xl my-8 px-3 font-bold">Tv Show</h2>
       <div className="grid grid-cols-3 gap-2">
         {popularList.map((tv) => (

@@ -3,6 +3,7 @@ import { getTvDetail, getTvRecommendations } from "../../api/tv";
 import Movie from "../../components/Movie";
 
 const TvDetail = ({ tvData, recommendataionData }) => {
+  console.log(tvData);
   return (
     <div
       className="bg-cover bg-center relative flex justify-center items-center"

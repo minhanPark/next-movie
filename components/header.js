@@ -5,6 +5,12 @@ import { useRouter } from "next/router";
 const Header = () => {
   const [searchValue, setSearchValue] = useState("");
   const router = useRouter();
+  const search = (e) => {
+    e.preventDefault();
+    console.log("worked");
+    router.push(`/search?name=${searchValue}`);
+    setSearchValue("");
+  };
   return (
     <div className="bg-black px-4 flex flex-col sm:flex-row">
       <div className="flex align-center items-center flex-auto py-3">
@@ -13,7 +19,7 @@ const Header = () => {
             <a>NexTMoviE</a>
           </Link>
         </span>
-        <form className="flex-auto">
+        <form className="flex-auto" onSubmit={search}>
           <input
             type="text"
             name="searchValue"

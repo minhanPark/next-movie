@@ -40,7 +40,7 @@ const ImageSlider = ({ list, isMovie = true }) => {
     ? null
     : list.map((movie, i) => (
         <div className={`${index === i ? "" : "hidden"}`} key={movie.id}>
-          <Link href={isMobile ? `/movie/${movie.id}` : `/tv/${movie.id}`}>
+          <Link href={isMovie ? `/movie/${movie.id}` : `/tv/${movie.id}`}>
             <a>
               <div
                 className="bg-center bg-cover relative"

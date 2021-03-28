@@ -10,7 +10,7 @@ const MoviePage = ({ nowPlayingList, popularList }) => {
       <h2 className="text-3xl my-8 px-3 font-bold">Movie</h2>
       <div className="grid grid-cols-3 gap-2">
         {popularList.map((movie) => (
-          <Link href={`/movie/${movie.id}`}>
+          <Link href={`/movie/${movie.id}`} key={movie.id}>
             <a>
               <div className="w-full relative group">
                 <div className="bg-gray-400 bg-opacity-60 py-3 w-full text-center absolute bottom-2 group-hover:bg-opacity-100">
