@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 //head 수정입니다.
+// 수정
 
 const Header = () => {
   const [searchValue, setSearchValue] = useState("");
